@@ -16,7 +16,7 @@ export default function App() {
       <View style = {styles.top}>
         <Image
           style = {styles.logo}
-          source = {require('./assets/logo_fpt.png')}
+          source = {require('./assets/logo2.jpg')}
         />
         <Text style={styles.textTop}>FIS INSIGHT PORTAL</Text>
         <View style = {styles.dash}>
@@ -28,27 +28,30 @@ export default function App() {
       
       <View style = {styles.fromLogin}>
         <Text style = {styles.textLogin}>ĐĂNG NHẬP HỆ THỐNG</Text>
+
         <View style={styles.input}>
-          <Icon style={styles.inputIcon} name={'user'} size={30} color={'#b2bcc6'}/>
+          <Icon style={styles.iconUser} name={'user'} size={25} color={'#b2bcc6'}/>
           <TextInput style={styles.inputId} placeholder={'Tài khoản'} placeholderTextColor='#335271'/>
         </View>
+
         <View style={styles.input}>
-          <Icon style={styles.inputIcon} name={'lock'} size={30} color={'#b2bcc6'}/>
+          <Icon style={styles.iconLock} name={'lock'} size={25} color={'#b2bcc6'}/>
           <TextInput secureTextEntry={isSecureEntry} style={styles.inputPw} placeholder={'Mật Khẩu'} placeholderTextColor='#335271'/>
-          <TouchableOpacity onPress={()=>{setIsSecureEntry((prev)=>!prev)}}>
-            <Icon style={styles.inputIcon} name={isSecureEntry?'eye':'eye-slash'} size={30} color={'#b2bcc6'}/>
+          <TouchableOpacity style={styles.iconEye} onPress={()=>{setIsSecureEntry((prev)=>!prev)}}>
+            <Icon name={isSecureEntry?'eye':'eye-slash'} size={25} color={'#b2bcc6'}/>
           </TouchableOpacity>
         </View>
         <View style={{flexDirection:'row', alignItems:'center'}}>
           <RadioButton color='#ff9336'/>
-          <Text style={{color:'#ff9336', fontWeight:'bold', fontSize:20}}>Ghi nhớ đăng nhập</Text>
+          <Text style={{color:'#ff9336', fontWeight:'bold', fontSize:15}}>Ghi nhớ đăng nhập</Text>
         </View>
-        <Button title='ĐĂNG NHẬP'color='#ff9336'/>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.textBtn}>ĐĂNG NHẬP</Text>
+        </TouchableOpacity>
       </View>
       <View style={styles.bottom}>
         <Image
-            style = {{height:100}}
-            source = {require('./assets/fis_logo.png')}
+            source = {require('./assets/image.jpg')}
           />
         <Text style={{color:'#b2bcc6',paddingTop:50}}>Copyright {'\u00A9'} 2019, FPT Information System</Text>
       </View>
@@ -57,26 +60,33 @@ export default function App() {
 }
 
 const dashStyles = {
-  width: 40,
-  height: 5,
-  marginHorizontal: 3
+  padding:20,
+  paddingBottom:3,
+  paddingTop:3,
+  marginHorizontal: 2
 }
-
+const icon = {
+  alignItems:'center',
+  backgroundColor: '#e6eaed',
+  padding:10,
+  justifyContent:'center',
+  flex:1
+}
 const styles = StyleSheet.create({
  container: {
-   backgroundColor : '#f4f8fb',
+   backgroundColor : '#fff',
    flex: 1
  },
  logo:{
 
  },
  top: {
-   paddingTop: 20,
+   paddingTop: 70,
    width: 'auto',
    alignItems: 'center'
  },
  textTop: {
-   fontSize: 30,
+   fontSize: 25,
    textAlign: 'center',
    fontWeight: 'bold',
    color: '#335271',
@@ -98,41 +108,59 @@ const styles = StyleSheet.create({
    backgroundColor: 'green'
  },
  fromLogin:{
-  marginHorizontal: 30,
-  marginTop: 10
+  marginHorizontal: 60,
+  marginTop: 5,
+  marginBottom: 5
  },
  textLogin: {
    textAlign: 'center',
-   fontSize: 25,
+   fontSize: 20,
    color: '#fea026',
    fontWeight: 'bold',
-   paddingBottom: 10
+   paddingBottom: 5
  },
  inputId: {
-    height: 60,
-    flex: 1,
+    flex: 8,
     backgroundColor: '#e6eaed',
-    fontSize: 25,
-    paddingLeft: 60
+    fontSize: 20,
+    paddingTop: 5,
+    paddingBottom: 5,
+    textAlign:'center'
  },
  inputPw: {
-    height: 60,
-    flex: 1,
+    flex: 6,
     backgroundColor: '#e6eaed',
-    paddingLeft: 60,
-    fontSize: 25,
+    paddingTop: 5,
+    paddingBottom: 5,
+    paddingLeft:60,
+    fontSize: 20,
+    textAlign: 'center'
  },
  input:{
    flexDirection: 'row',
-   marginBottom: 10
+   marginBottom: 10,
  },
- inputIcon: {
-  alignItems:'center',
-  backgroundColor: '#e6eaed',
-  padding:15,
-  justifyContent:'center'
+ iconUser: {
+  ...icon
+ },
+ iconLock:{
+   ...icon
+ },
+ iconEye:{
+  ...icon
+ },
+ button: {
+   backgroundColor: '#ff9336',
+   padding:10,
+   borderRadius: 5,
+ },
+ textBtn:{
+   textAlign:'center',
+   color:'#fff',
+   fontSize: 17,
+   fontWeight: 'bold'
  },
  bottom: {
-   alignItems:'center',
+    alignItems:'center',
  }
 });
